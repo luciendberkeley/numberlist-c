@@ -57,7 +57,7 @@ int main() {
 	int input;
 	char next_char;
 
-	printf("Enter integers separated by spaces: ");
+	printf("Enter integers separated by commas: ");
 	do {
 			if (scanf("%d", &input) == 1) {
 				listAdd(&list, input);
