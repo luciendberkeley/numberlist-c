@@ -54,13 +54,24 @@ int main() {
 	NumberList list;
 	listInit(&list);
 
-	listAdd(&list, 5);
-	listAdd(&list, 83);
-	listAdd(&list, 12389);
+	int input;
+	char next_char;
 
+	printf("Enter integers separated by spaces: ");
+	do {
+			if (scanf("%d", &input) == 1) {
+				listAdd(&list, input);
+			}
+			next_char = getchar();
+	} while (next_char != '\n' && next_char != EOF);
+
+	printf("List Made\n");
 	listPrint(&list);
 
-	printf("Index: %i, Value: %i\n", 2, listGet(&list, 2));
+	input = -1;
+	printf("Enter an index: ");
+	scanf("%i", &input);
+	printf("list[%d] = %d\n", input, listGet(&list, input));
 
 	return 0;
 }
