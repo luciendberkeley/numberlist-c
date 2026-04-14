@@ -6,9 +6,24 @@ typedef struct {
 	size_t capacity;
 } Header;
 
-size_t arrSize(int* arr) {
-	return (((Header*) arr) - 1)->count;
-}
+#define arrSize(arr) (((Header*) (arr)) - 1)->count
+
+#define arrPush(arr, val) \
+	do { \
+		if(arr == NULL) {
+			size_t iC = 256;
+			Header* header = malloc(sizeof(Header) + iC * sizeof(*arr));
+
+			header->count = 0;
+			header->capacity = iC;
+
+			arr = (void*) (header + 1);
+		}
+
+		Header* header = ((Header*) (arr) - 1);
+
+
+	} while(0) \
 
 int* arrPush(int* arr, int val) {
 	if(arr == NULL) {
